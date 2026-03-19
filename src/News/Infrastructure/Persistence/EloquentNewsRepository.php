@@ -7,6 +7,7 @@ namespace Src\News\Infrastructure\Persistence;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Str;
 use Src\News\Application\DTOs\CreateNewsInput;
+use Src\News\Application\DTOs\SearchNewsInput;
 use Src\News\Domain\Contracts\NewsRepository;
 use Src\News\Infrastructure\Models\News;
 
@@ -22,21 +23,28 @@ final class EloquentNewsRepository implements NewsRepository
         ]);
     }
 
-    public function paginateByFilters(?string $title, ?int $categoryId, int $perPage = 10): LengthAwarePaginator
+    public function paginateByFilters(SearchNewsInput $input): LengthAwarePaginator
     {
         return News::query()
             ->with('category')
             ->when(
-                filled($title),
-                fn ($query) => $query->where('title', 'like', '%' . trim((string) $title) . '%')
+                $input->title !== null,
+                fn ($query) => $query->where('title', 'like', '%' . $input->title . '%')
             )
             ->when(
-                filled($categoryId),
-                fn ($query) => $query->where('category_id', $categoryId)
+                $input->categoryId !== null,
+                fn ($query) => $query->where('category_id', $input->categoryId)
             )
-            ->latest('id')
-            ->paginate($perPage)
+            ->orderByDesc('created_at')
+            ->orderByDesc('id')
+            ->paginate($input->perPage)
             ->withQueryString();
     }
-}
 
+    public function findByIdWithCategory(int $id): ?News
+    {
+        return News::query()
+            ->with('category')
+            ->find($id);
+    }
+}

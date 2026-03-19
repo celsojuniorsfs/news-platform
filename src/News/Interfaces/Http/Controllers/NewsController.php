@@ -5,13 +5,18 @@ declare(strict_types=1);
 namespace Src\News\Interfaces\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-use Illuminate\View\View;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+use Throwable;
 use Src\Category\Application\UseCases\ListCategoriesUseCase;
 use Src\News\Application\DTOs\CreateNewsInput;
+use Src\News\Application\DTOs\SearchNewsInput;
 use Src\News\Application\UseCases\CreateNewsUseCase;
+use Src\News\Application\UseCases\GetNewsDetailUseCase;
 use Src\News\Application\UseCases\SearchNewsUseCase;
+use Src\News\Domain\Exceptions\NewsNotFoundException;
 use Src\News\Interfaces\Http\Requests\StoreNewsRequest;
 
 final class NewsController extends Controller
@@ -21,15 +26,14 @@ final class NewsController extends Controller
         SearchNewsUseCase $searchNewsUseCase,
         ListCategoriesUseCase $listCategoriesUseCase,
     ): View {
-        $title = $request->string('title')->toString() ?: null;
-        $categoryId = $request->integer('category_id') ?: null;
+        $filters = SearchNewsInput::fromArray($request->all());
 
         return view('news.index', [
-            'newsItems' => $searchNewsUseCase->execute($title, $categoryId),
+            'newsItems' => $searchNewsUseCase->execute($filters),
             'categories' => $listCategoriesUseCase->execute(),
             'filters' => [
-                'title' => $title,
-                'category_id' => $categoryId,
+                'title' => $filters->title,
+                'category_id' => $filters->categoryId,
             ],
         ]);
     }
@@ -38,13 +42,34 @@ final class NewsController extends Controller
         StoreNewsRequest $request,
         CreateNewsUseCase $useCase,
     ): RedirectResponse {
-        $useCase->execute(
-            CreateNewsInput::fromArray($request->validated())
-        );
+        try {
+            $news = $useCase->execute(
+                CreateNewsInput::fromArray($request->validated())
+            );
 
-        return redirect()
-            ->route('news.index')
-            ->with('success', 'Notícia cadastrada com sucesso.');
+            return redirect()
+                ->route('news.show', $news->id)
+                ->with('success', 'Notícia cadastrada com sucesso.');
+        } catch (Throwable) {
+            return redirect()
+                ->back()
+                ->withInput()
+                ->withErrors([
+                    'general' => 'Não foi possível cadastrar a notícia. Tente novamente.',
+                ]);
+        }
+    }
+
+    public function show(
+        int $news,
+        GetNewsDetailUseCase $useCase,
+    ): View {
+        try {
+            return view('news.show', [
+                'newsItem' => $useCase->execute($news),
+            ]);
+        } catch (NewsNotFoundException) {
+            throw new NotFoundHttpException('Notícia não encontrada.');
+        }
     }
 }
-

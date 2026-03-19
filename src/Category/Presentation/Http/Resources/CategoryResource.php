@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Src\Category\Interfaces\Http\Resources;
+namespace Src\Category\Presentation\Http\Resources;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
@@ -24,4 +24,3 @@ final class CategoryResource extends JsonResource
         ];
     }
 }
-

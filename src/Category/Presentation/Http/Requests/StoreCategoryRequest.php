@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Src\Category\Interfaces\Http\Requests;
+namespace Src\Category\Presentation\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Str;

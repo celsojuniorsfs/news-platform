@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Src\News\Interfaces\Http\Controllers;
+namespace Src\News\Presentation\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Contracts\View\View;
@@ -17,7 +17,7 @@ use Src\News\Application\UseCases\CreateNewsUseCase;
 use Src\News\Application\UseCases\GetNewsDetailUseCase;
 use Src\News\Application\UseCases\SearchNewsUseCase;
 use Src\News\Domain\Exceptions\NewsNotFoundException;
-use Src\News\Interfaces\Http\Requests\StoreNewsRequest;
+use Src\News\Presentation\Http\Requests\StoreNewsRequest;
 
 final class NewsController extends Controller
 {

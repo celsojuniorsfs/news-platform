@@ -3,8 +3,8 @@
 declare(strict_types=1);
 
 use Illuminate\Support\Facades\Route;
-use Src\Category\Interfaces\Http\Controllers\CategoryController;
-use Src\News\Interfaces\Http\Controllers\NewsController;
+use Src\Category\Presentation\Http\Controllers\CategoryController;
+use Src\News\Presentation\Http\Controllers\NewsController;
 
 Route::get('/', fn () => redirect()->route('news.index'));
 

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Src\Category\Interfaces\Http\Controllers;
+namespace Src\Category\Presentation\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\RedirectResponse;
@@ -12,7 +12,7 @@ use Src\Category\Application\DTOs\CreateCategoryInput;
 use Src\Category\Application\UseCases\CreateCategoryUseCase;
 use Src\Category\Application\UseCases\ListCategoriesUseCase;
 use Src\Category\Domain\Exceptions\CategoryAlreadyExistsException;
-use Src\Category\Interfaces\Http\Requests\StoreCategoryRequest;
+use Src\Category\Presentation\Http\Requests\StoreCategoryRequest;
 
 final class CategoryController extends Controller
 {

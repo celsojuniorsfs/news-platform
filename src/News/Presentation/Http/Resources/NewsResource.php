@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Src\News\Interfaces\Http\Resources;
+namespace Src\News\Presentation\Http\Resources;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;

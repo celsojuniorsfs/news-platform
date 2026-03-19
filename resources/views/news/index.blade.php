@@ -11,6 +11,10 @@
         <p>{{ session('success') }}</p>
     @endif
 
+    @if ($errors->has('general'))
+        <p>{{ $errors->first('general') }}</p>
+    @endif
+
     @if ($errors->any())
         <ul>
             @foreach ($errors->all() as $error)
@@ -19,7 +23,7 @@
         </ul>
     @endif
 
-    <h2>Buscar</h2>
+    <h2>Buscar notícias</h2>
 
     <form method="GET" action="{{ route('news.index') }}">
         <input
@@ -43,6 +47,8 @@
 
         <button type="submit">Buscar</button>
     </form>
+
+    <hr>
 
     <h2>Nova notícia</h2>
 
@@ -71,24 +77,26 @@
         <button type="submit">Salvar</button>
     </form>
 
-    <h2>Lista</h2>
+    <hr>
+
+    <h2>Lista de notícias</h2>
 
     @forelse ($newsItems as $news)
         <article style="margin-bottom: 24px;">
             <h3>{{ $news->title }}</h3>
-            <small>
-                Categoria: {{ $news->category->name }}
-                @if ($news->category->slug)
-                    ({{ $news->category->slug }})
-                @endif
-            </small>
+
+            <p>
+                <strong>Categoria:</strong> {{ $news->category->name }}
+            </p>
 
             <p>
                 {{ $news->excerpt ?: \Illuminate\Support\Str::limit($news->content, 180) }}
             </p>
+
+            <a href="{{ route('news.show', $news->id) }}">Acessar</a>
         </article>
     @empty
-        <p>Nenhuma notícia encontrada.</p>
+        <p>Nenhuma notícia encontrada para os filtros informados.</p>
     @endforelse
 
     {{ $newsItems->links() }}

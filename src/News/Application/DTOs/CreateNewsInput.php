@@ -19,11 +19,10 @@ final readonly class CreateNewsInput
         return new self(
             title: trim((string) $data['title']),
             content: trim((string) $data['content']),
-            excerpt: isset($data['excerpt']) && $data['excerpt'] !== ''
+            excerpt: isset($data['excerpt']) && trim((string) $data['excerpt']) !== ''
                 ? trim((string) $data['excerpt'])
                 : null,
             categoryId: (int) $data['category_id'],
         );
     }
 }
-

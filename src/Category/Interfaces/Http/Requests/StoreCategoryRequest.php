@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Src\Category\Interfaces\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Str;
 use Illuminate\Validation\Rule;
 
 final class StoreCategoryRequest extends FormRequest
@@ -12,6 +13,19 @@ final class StoreCategoryRequest extends FormRequest
     public function authorize(): bool
     {
         return true;
+    }
+
+    protected function prepareForValidation(): void
+    {
+        $name = $this->input('name');
+        $slug = $this->input('slug');
+
+        $this->merge([
+            'name' => is_string($name) ? trim($name) : $name,
+            'slug' => is_string($slug) && trim($slug) !== ''
+                ? Str::slug(trim($slug))
+                : null,
+        ]);
     }
 
     /**
@@ -49,8 +63,10 @@ final class StoreCategoryRequest extends FormRequest
     public function messages(): array
     {
         return [
+            'name.required' => 'O nome da categoria é obrigatório.',
+            'name.unique' => 'Já existe uma categoria com esse nome.',
+            'slug.unique' => 'Já existe uma categoria com esse slug.',
             'slug.regex' => 'O campo slug deve conter apenas letras minúsculas, números e hífens.',
         ];
     }
 }
-

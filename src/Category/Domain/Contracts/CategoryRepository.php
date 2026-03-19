@@ -12,6 +12,7 @@ interface CategoryRepository
 {
     public function create(CreateCategoryInput $input): Category;
 
+    public function existsByName(string $name): bool;
+
     public function findAllOrdered(): Collection;
 }
-

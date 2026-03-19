@@ -11,6 +11,10 @@
         <p>{{ session('success') }}</p>
     @endif
 
+    @if ($errors->has('general'))
+        <p>{{ $errors->first('general') }}</p>
+    @endif
+
     @if ($errors->any())
         <ul>
             @foreach ($errors->all() as $error)

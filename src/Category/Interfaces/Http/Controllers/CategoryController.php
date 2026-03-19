@@ -7,9 +7,11 @@ namespace Src\Category\Interfaces\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
+use Throwable;
 use Src\Category\Application\DTOs\CreateCategoryInput;
 use Src\Category\Application\UseCases\CreateCategoryUseCase;
 use Src\Category\Application\UseCases\ListCategoriesUseCase;
+use Src\Category\Domain\Exceptions\CategoryAlreadyExistsException;
 use Src\Category\Interfaces\Http\Requests\StoreCategoryRequest;
 
 final class CategoryController extends Controller
@@ -25,13 +27,28 @@ final class CategoryController extends Controller
         StoreCategoryRequest $request,
         CreateCategoryUseCase $useCase,
     ): RedirectResponse {
-        $useCase->execute(
-            CreateCategoryInput::fromArray($request->validated())
-        );
+        try {
+            $useCase->execute(
+                CreateCategoryInput::fromArray($request->validated())
+            );
 
-        return redirect()
-            ->back()
-            ->with('success', 'Categoria cadastrada com sucesso.');
+            return redirect()
+                ->back()
+                ->with('success', 'Categoria cadastrada com sucesso.');
+        } catch (CategoryAlreadyExistsException $exception) {
+            return redirect()
+                ->back()
+                ->withInput()
+                ->withErrors([
+                    'name' => $exception->getMessage(),
+                ]);
+        } catch (Throwable) {
+            return redirect()
+                ->back()
+                ->withInput()
+                ->withErrors([
+                    'general' => 'Não foi possível cadastrar a categoria. Tente novamente.',
+                ]);
+        }
     }
 }
-

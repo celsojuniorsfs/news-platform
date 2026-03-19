@@ -20,6 +20,13 @@ final class EloquentCategoryRepository implements CategoryRepository
         ]);
     }
 
+    public function existsByName(string $name): bool
+    {
+        return Category::query()
+            ->whereRaw('LOWER(name) = ?', [mb_strtolower(trim($name))])
+            ->exists();
+    }
+
     public function findAllOrdered(): Collection
     {
         return Category::query()
@@ -27,4 +34,3 @@ final class EloquentCategoryRepository implements CategoryRepository
             ->get();
     }
 }
-

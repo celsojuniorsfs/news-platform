@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Src\Category\Presentation\Http\Controllers;
 
-use App\Http\Controllers\Controller;
+use Illuminate\Routing\Controller;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
 use Throwable;

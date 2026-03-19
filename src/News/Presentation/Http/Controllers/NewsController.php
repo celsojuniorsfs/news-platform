@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Src\News\Presentation\Http\Controllers;
 
-use App\Http\Controllers\Controller;
+use Illuminate\Routing\Controller;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;

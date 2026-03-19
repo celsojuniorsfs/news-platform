@@ -8,43 +8,30 @@ Plataforma simples para cadastrar e consultar notícias, desenvolvida com **Lara
 
 ### Pré-requisitos
 
-- [Docker Desktop](https://www.docker.com/products/docker-desktop/)
+- Docker Desktop
 - Git
 - Bash
 
-### Instalação em 6 Passos
+### Instalação em 6 passos
 
-```bash
 # 1️⃣ Clone o repositório
 git clone https://github.com/celsojuniorsfs/news-platform.git
 cd news-platform
 
-# 2️⃣ Configure e suba o ambiente
+# 2️⃣ Crie o arquivo de ambiente
 cp .env.example .env
-docker-compose up -d
 
-# 3️⃣ Rode as migrations
-docker-compose exec app php artisan migrate
+# 3️⃣ Suba os containers
+docker-compose up -d --build
 
 # 4️⃣ Gere a chave da aplicação
 docker-compose exec app php artisan key:generate
 
-# 5️⃣ Rode os seeders para massa de teste
+# 5️⃣ Rode as migrations
+docker-compose exec app php artisan migrate
+
+# 6️⃣ Rode os seeders
 docker-compose exec app php artisan db:seed
 
-# 6️⃣ Acesse a aplicação
+# Acesse
 # 🌐 http://localhost:8080
-```
-
-✅ Pronto! A aplicação está rodando em `http://localhost:8080`
-
----
-
-## 📚 Stack Tecnológico
-
-- **PHP 8.3** + **Laravel 12**
-- **MySQL 8.0** (banco de dados)
-- **Nginx** (servidor web)
-- **Docker** + **Docker Compose** (ambiente)
-- **Tailwind CSS** (estilização)
-- **Vite** (bundler de assets)

@@ -20,6 +20,7 @@ final class CategoryResource extends JsonResource
         return [
             'id' => (int) $this->id,
             'name' => (string) $this->name,
+            'slug' => $this->slug !== null ? (string) $this->slug : null,
         ];
     }
 }

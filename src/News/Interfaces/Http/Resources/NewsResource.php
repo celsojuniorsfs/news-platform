@@ -21,11 +21,14 @@ final class NewsResource extends JsonResource
             'id' => (int) $this->id,
             'title' => (string) $this->title,
             'content' => (string) $this->content,
+            'excerpt' => $this->excerpt !== null ? (string) $this->excerpt : null,
             'category' => [
                 'id' => (int) $this->category->id,
                 'name' => (string) $this->category->name,
+                'slug' => $this->category->slug !== null ? (string) $this->category->slug : null,
             ],
             'created_at' => $this->created_at?->toDateTimeString(),
+            'updated_at' => $this->updated_at?->toDateTimeString(),
         ];
     }
 }

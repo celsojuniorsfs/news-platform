@@ -18,6 +18,7 @@ final class News extends Model
     protected $fillable = [
         'title',
         'content',
+        'excerpt',
         'category_id',
     ];
 

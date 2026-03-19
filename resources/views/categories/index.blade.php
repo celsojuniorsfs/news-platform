@@ -21,13 +21,24 @@
 
     <form method="POST" action="{{ route('categories.store') }}">
         @csrf
+
         <input type="text" name="name" placeholder="Nome da categoria" value="{{ old('name') }}">
+        <br><br>
+
+        <input type="text" name="slug" placeholder="Slug opcional" value="{{ old('slug') }}">
+        <br><br>
+
         <button type="submit">Salvar</button>
     </form>
 
     <ul>
         @foreach ($categories as $category)
-            <li>{{ $category->name }}</li>
+            <li>
+                {{ $category->name }}
+                @if ($category->slug)
+                    - <small>{{ $category->slug }}</small>
+                @endif
+            </li>
         @endforeach
     </ul>
 </body>

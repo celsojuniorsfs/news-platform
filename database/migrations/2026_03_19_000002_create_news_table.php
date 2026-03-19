@@ -13,6 +13,7 @@ return new class () extends Migration {
             $table->id();
             $table->string('title');
             $table->text('content');
+            $table->string('excerpt', 500)->nullable();
             $table->foreignId('category_id')
                 ->constrained('categories')
                 ->cascadeOnDelete();
@@ -20,6 +21,7 @@ return new class () extends Migration {
 
             $table->index('title');
             $table->index('category_id');
+            $table->index(['category_id', 'created_at']);
         });
     }
 
@@ -28,4 +30,3 @@ return new class () extends Migration {
         Schema::dropIfExists('news');
     }
 };
-

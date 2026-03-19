@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Src\News\Infrastructure\Models;
 
+use Database\Factories\NewsFactory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -29,5 +30,9 @@ final class News extends Model
     {
         return $this->belongsTo(Category::class, 'category_id');
     }
-}
 
+    protected static function newFactory(): NewsFactory
+    {
+        return NewsFactory::new();
+    }
+}

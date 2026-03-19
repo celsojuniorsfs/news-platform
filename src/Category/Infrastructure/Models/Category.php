@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Src\Category\Infrastructure\Models;
 
+use Database\Factories\CategoryFactory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -27,5 +28,9 @@ final class Category extends Model
     {
         return $this->hasMany(News::class, 'category_id');
     }
-}
 
+    protected static function newFactory(): CategoryFactory
+    {
+        return CategoryFactory::new();
+    }
+}

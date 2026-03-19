@@ -1,24 +1,76 @@
-*.log
-.DS_Store
+# Environment
 .env
 .env.backup
 .env.production
-.phpactor.json
+.env.local
+.env.*.local
+
+# IDE & Editor
+.idea/
+.nova/
+.vscode/
+.fleet/
+.zed/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+
+# PHP
+/vendor/
+composer.lock
 .phpunit.result.cache
-/.fleet
-/.idea
-/.nova
-/.phpunit.cache
-/.vscode
-/.zed
-/auth.json
-/node_modules
-/public/build
+.phpunit.cache/
+.phpactor.json
+
+# Node & Assets
+/node_modules/
+/public/build/
 /public/hot
-/public/storage
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# Storage & Logs
+/storage/app/*
+!/storage/app/.gitkeep
+/storage/app/public/
+!/storage/app/public/.gitkeep
+/storage/framework/cache/
+!/storage/framework/cache/.gitkeep
+/storage/framework/sessions/
+!/storage/framework/sessions/.gitkeep
+/storage/framework/testing/
+!/storage/framework/testing/.gitkeep
+/storage/framework/views/
+!/storage/framework/views/.gitkeep
+/storage/logs/
+!/storage/logs/.gitkeep
 /storage/*.key
-/storage/pail
-/vendor
+/storage/pail/
+
+# Public Storage
+/public/storage/
+
+# Testing
+.phpunit.result.cache
+
+# Misc
+auth.json
 Homestead.json
 Homestead.yaml
-Thumbs.db
+/bootstrap/cache/
+.env.dusk.local
+
+# Docker/Vagrant
+/.vagrant/
+
+# OS Files
+.AppleDouble
+.LSOverride
+._*
+
+# IDE specific files
+*.sublime-project
+*.sublime-workspace

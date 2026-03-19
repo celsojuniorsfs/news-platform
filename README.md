@@ -4,35 +4,43 @@ Plataforma simples para cadastrar e consultar notícias, desenvolvida com **Lara
 
 ---
 
-### Pré-requisitos
+## 🚀 Quick Start (Docker)
 
-Você precisa ter instalado:
+### Pré-requisitos
 
 - [Docker Desktop](https://www.docker.com/products/docker-desktop/)
 - Git
+- Bash
 
-### Instalação rápida
+### Instalação em 3 Passos
 
 ```bash
 # 1️⃣ Clone o repositório
 git clone https://github.com/celsojuniorsfs/news-platform.git
 cd news-platform
 
-# 2️⃣ Suba o projeto
-./vendor/bin/sail up -d
+# 2️⃣ Configure e suba o ambiente
+cp .env.example .env
+docker-compose up -d
 
-# 3️⃣ Configure a aplicação
-./vendor/bin/sail artisan key:generate
-./vendor/bin/sail artisan migrate
+# 3️⃣ Rode as migrations
+docker-compose exec app php artisan migrate
 
-# 4️⃣ Pronto! Acesse http://localhost
+# 4️⃣ Acesse a aplicação
+# 🌐 http://localhost:8080
 ```
+
+✅ Pronto! A aplicação está rodando em `http://localhost:8080`
+
+**Para mais detalhes**, veja [DOCKER_SETUP.md](./DOCKER_SETUP.md)
 
 ---
 
-## 📚 Stack tecnológico
+## 📚 Stack Tecnológico
 
-- **PHP 8.2** + **Laravel 12**
-- **MySQL** (banco de dados)
-- **Docker** (ambiente completo)
-- **Blade** (templates)
+- **PHP 8.3** + **Laravel 12**
+- **MySQL 8.0** (banco de dados)
+- **Nginx** (servidor web)
+- **Docker** + **Docker Compose** (ambiente)
+- **Tailwind CSS** (estilização)
+- **Vite** (bundler de assets)

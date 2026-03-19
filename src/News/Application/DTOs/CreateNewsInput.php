@@ -9,6 +9,7 @@ final readonly class CreateNewsInput
     public function __construct(
         public string $title,
         public string $content,
+        public ?string $excerpt,
         public int $categoryId,
     ) {
     }
@@ -16,8 +17,11 @@ final readonly class CreateNewsInput
     public static function fromArray(array $data): self
     {
         return new self(
-            title: (string) $data['title'],
-            content: (string) $data['content'],
+            title: trim((string) $data['title']),
+            content: trim((string) $data['content']),
+            excerpt: isset($data['excerpt']) && $data['excerpt'] !== ''
+                ? trim((string) $data['excerpt'])
+                : null,
             categoryId: (int) $data['category_id'],
         );
     }

@@ -55,6 +55,9 @@
         <textarea name="content" placeholder="Conteúdo">{{ old('content') }}</textarea>
         <br><br>
 
+        <textarea name="excerpt" placeholder="Resumo opcional para listagem">{{ old('excerpt') }}</textarea>
+        <br><br>
+
         <select name="category_id">
             <option value="">Selecione a categoria</option>
             @foreach ($categories as $category)
@@ -73,8 +76,16 @@
     @forelse ($newsItems as $news)
         <article style="margin-bottom: 24px;">
             <h3>{{ $news->title }}</h3>
-            <small>Categoria: {{ $news->category->name }}</small>
-            <p>{{ $news->content }}</p>
+            <small>
+                Categoria: {{ $news->category->name }}
+                @if ($news->category->slug)
+                    ({{ $news->category->slug }})
+                @endif
+            </small>
+
+            <p>
+                {{ $news->excerpt ?: \Illuminate\Support\Str::limit($news->content, 180) }}
+            </p>
         </article>
     @empty
         <p>Nenhuma notícia encontrada.</p>

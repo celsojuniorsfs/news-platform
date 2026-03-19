@@ -21,6 +21,7 @@ final class StoreNewsRequest extends FormRequest
         return [
             'title' => ['required', 'string', 'min:3', 'max:255'],
             'content' => ['required', 'string', 'min:10'],
+            'excerpt' => ['nullable', 'string', 'max:500'],
             'category_id' => ['required', 'integer', 'exists:categories,id'],
         ];
     }
@@ -33,6 +34,7 @@ final class StoreNewsRequest extends FormRequest
         return [
             'title' => 'título',
             'content' => 'conteúdo',
+            'excerpt' => 'resumo',
             'category_id' => 'categoria',
         ];
     }

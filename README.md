@@ -32,8 +32,6 @@ docker-compose exec app php artisan migrate
 
 ✅ Pronto! A aplicação está rodando em `http://localhost:8080`
 
-**Para mais detalhes**, veja [DOCKER_SETUP.md](./DOCKER_SETUP.md)
-
 ---
 
 ## 📚 Stack Tecnológico

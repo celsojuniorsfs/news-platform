@@ -12,7 +12,7 @@ Plataforma simples para cadastrar e consultar notícias, desenvolvida com **Lara
 - Git
 - Bash
 
-### Instalação em 3 Passos
+### Instalação em 6 Passos
 
 ```bash
 # 1️⃣ Clone o repositório
@@ -26,7 +26,13 @@ docker-compose up -d
 # 3️⃣ Rode as migrations
 docker-compose exec app php artisan migrate
 
-# 4️⃣ Acesse a aplicação
+# 4️⃣ Gere a chave da aplicação
+docker-compose exec app php artisan key:generate
+
+# 5️⃣ Rode os seeders para massa de teste
+docker-compose exec app php artisan db:seed
+
+# 6️⃣ Acesse a aplicação
 # 🌐 http://localhost:8080
 ```
 

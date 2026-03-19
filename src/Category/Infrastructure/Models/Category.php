@@ -1,0 +1,30 @@
+<?php
+
+declare(strict_types=1);
+
+namespace Src\Category\Infrastructure\Models;
+
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Src\News\Infrastructure\Models\News;
+
+final class Category extends Model
+{
+    use HasFactory;
+
+    protected $table = 'categories';
+
+    protected $fillable = [
+        'name',
+    ];
+
+    /**
+     * @return HasMany<News, self>
+     */
+    public function news(): HasMany
+    {
+        return $this->hasMany(News::class, 'category_id');
+    }
+}
+

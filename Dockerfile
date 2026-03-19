@@ -1,9 +1,11 @@
-FROM php:8.3-apache AS base
+FROM php:8.3-apache
 
 # Dependências do sistema
 RUN apt-get update && apt-get install -y \
     git \
+    curl \
     unzip \
+    zip \
     libzip-dev \
     libpng-dev \
     libjpeg62-turbo-dev \
@@ -11,7 +13,6 @@ RUN apt-get update && apt-get install -y \
     libonig-dev \
     libxml2-dev \
     libicu-dev \
-    curl \
     nodejs \
     npm \
     && docker-php-ext-configure gd --with-freetype --with-jpeg \
@@ -24,7 +25,9 @@ RUN apt-get update && apt-get install -y \
         bcmath \
         intl \
         gd \
-    && a2enmod rewrite headers
+    && a2enmod rewrite headers \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/*
 
 # Composer
 COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
@@ -45,8 +48,8 @@ COPY . .
 RUN composer install \
     --no-interaction \
     --prefer-dist \
-    --optimize-autoloader \
-    --no-dev
+    --no-dev \
+    --optimize-autoloader
 
 # Instala dependências JS e gera build de produção
 RUN npm install && npm run build

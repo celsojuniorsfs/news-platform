@@ -7,8 +7,8 @@
     <section class="space-y-8">
         <div class="flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
             <div>
-                <p class="text-sm font-semibold uppercase tracking-[0.2em] text-neutral-500">Noticias</p>
-                <h1 class="mt-2 text-3xl font-bold tracking-tight text-neutral-950">Exibir noticias</h1>
+                <p class="text-sm font-semibold uppercase tracking-[0.2em] text-neutral-500">Notícias</p>
+                <h1 class="mt-2 text-3xl font-bold tracking-tight text-neutral-950">Exibir notícias</h1>
                 <p class="mt-2 max-w-2xl text-sm text-neutral-600">
                     Consulte os registros ja existentes com uma listagem em cards, busca simples e acesso rapido ao detalhe.
                 </p>
@@ -18,7 +18,7 @@
                 href="{{ route('news.create') }}"
                 class="inline-flex items-center justify-center rounded-2xl bg-neutral-900 px-5 py-3 text-sm font-semibold text-white shadow-sm transition hover:bg-neutral-800"
             >
-                Cadastrar noticia
+                Cadastrar notícia
             </a>
         </div>
 
@@ -108,9 +108,9 @@
                 @endif
             @empty
                 <div class="rounded-2xl border border-dashed border-neutral-300 bg-neutral-50 px-6 py-14 text-center">
-                    <h3 class="text-lg font-bold text-neutral-900">Nenhuma noticia encontrada</h3>
+                    <h3 class="text-lg font-bold text-neutral-900">Nenhuma notícia encontrada</h3>
                     <p class="mt-2 text-sm text-neutral-500">
-                        Cadastre uma nova noticia ou ajuste a busca para encontrar registros.
+                        Cadastre uma nova notícia ou ajuste a busca para encontrar registros.
                     </p>
                 </div>
             @endforelse

@@ -12,7 +12,7 @@
                 <p class="text-sm font-semibold uppercase tracking-[0.2em] text-neutral-500">Cadastro</p>
                 <h1 class="mt-2 text-3xl font-bold tracking-tight text-neutral-950">Cadastrar categorias</h1>
                 <p class="mt-2 max-w-2xl text-sm text-neutral-600">
-                    Cadastre categorias para organizar melhor as noticias e permitir filtros mais eficientes na listagem.
+                    Cadastre categorias para organizar melhor as notícias e permitir filtros mais eficientes na listagem.
                 </p>
             </div>
 
@@ -20,7 +20,7 @@
                 href="{{ route('news.create') }}"
                 class="inline-flex items-center justify-center rounded-2xl bg-neutral-900 px-5 py-3 text-sm font-semibold text-white shadow-sm transition hover:bg-neutral-800"
             >
-                Voltar para cadastro de noticias
+                Voltar para cadastro de notícias
             </a>
         </div>
 
@@ -59,7 +59,7 @@
                             </p>
                         @else
                             <p id="name-help" class="mt-2 text-sm text-neutral-500">
-                                Informe um nome claro e objetivo para facilitar a organizacao das noticias.
+                                Informe um nome claro e objetivo para facilitar a organização das notícias.
                             </p>
                         @enderror
                     </div>
@@ -96,7 +96,7 @@
                     <div>
                         <h2 class="text-xl font-bold text-neutral-950">Categorias cadastradas</h2>
                         <p class="mt-1 text-sm text-neutral-500">
-                            Visualize as categorias ja disponiveis para uso no cadastro de noticias.
+                            Visualize as categorias já disponíveis para uso no cadastro de notícias.
                         </p>
                     </div>
 
@@ -113,7 +113,7 @@
                             </p>
 
                             <p class="mt-1 text-sm text-neutral-500">
-                                Categoria disponivel para associacao com noticias
+                                Categoria disponível para associação com notícias
                             </p>
                         </div>
 

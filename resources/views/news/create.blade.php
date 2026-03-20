@@ -14,9 +14,9 @@
         <div class="flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
             <div>
                 <p class="text-sm font-semibold uppercase tracking-[0.2em] text-neutral-500">Cadastro</p>
-                <h1 class="mt-2 text-3xl font-bold tracking-tight text-neutral-950">Cadastrar noticias</h1>
+                <h1 class="mt-2 text-3xl font-bold tracking-tight text-neutral-950">Cadastrar notícias</h1>
                 <p class="mt-2 max-w-2xl text-sm text-neutral-600">
-                    Preencha os dados da noticia em uma tela dedicada, com validacao visual e acesso rapido ao cadastro de categorias.
+                    Preencha os dados da notícia em uma tela dedicada, com validação visual e acesso rápido ao cadastro de categorias.
                 </p>
             </div>
 
@@ -24,16 +24,16 @@
                 href="{{ route('news.index') }}"
                 class="inline-flex items-center justify-center rounded-2xl bg-neutral-900 px-5 py-3 text-sm font-semibold text-white shadow-sm transition hover:bg-neutral-800"
             >
-                Exibir noticias
+                Exibir notícias
             </a>
         </div>
 
         <section class="mx-auto w-full max-w-3xl rounded-[28px] border border-neutral-200 bg-white p-5 shadow-sm sm:p-8">
             <div class="mb-6 flex flex-col gap-3 md:flex-row md:items-start md:justify-between">
                 <div>
-                    <h2 class="text-xl font-bold text-neutral-950">Formulario da noticia</h2>
+                    <h2 class="text-xl font-bold text-neutral-950">Formulário da notícia</h2>
                     <p class="mt-1 text-sm text-neutral-500">
-                        Titulo, conteudo e categoria obrigatorios para um cadastro consistente.
+                        Título, conteúdo e categoria obrigatórios para um cadastro consistente.
                     </p>
                 </div>
 
@@ -50,7 +50,7 @@
 
                 <div>
                     <label for="news-title" class="mb-2 block text-sm font-semibold text-neutral-700">
-                        Titulo da noticia <span class="text-red-500">*</span>
+                        Título da notícia <span class="text-red-500">*</span>
                     </label>
 
                     <input
@@ -58,7 +58,7 @@
                         type="text"
                         name="title"
                         value="{{ old('title') }}"
-                        placeholder="Digite o titulo da noticia"
+                        placeholder="Digite o título da notícia"
                         maxlength="255"
                         class="form-input @error('title') form-input-error @enderror"
                         aria-invalid="{{ $errors->has('title') ? 'true' : 'false' }}"
@@ -71,7 +71,7 @@
                         </p>
                     @else
                         <p id="title-help" class="mt-2 text-sm text-neutral-500">
-                            Use um titulo objetivo para facilitar a identificacao da noticia na listagem.
+                            Use um título objetivo para facilitar a identificação da notícia na listagem.
                         </p>
                     @enderror
                 </div>
@@ -116,7 +116,7 @@
                         </p>
                     @else
                         <p id="category-help" class="mt-2 text-sm text-neutral-500">
-                            {{ $hasCategories ? 'Escolha a categoria que melhor representa a noticia.' : 'Voce ainda nao tem categorias disponiveis para vincular.' }}
+                            {{ $hasCategories ? 'Escolha a categoria que melhor representa a notícia.' : 'Você ainda não tem categorias disponíveis para vincular.' }}
                         </p>
                     @enderror
                 </div>
@@ -130,7 +130,7 @@
                         id="news-content"
                         name="content"
                         rows="10"
-                        placeholder="Digite o conteudo ou descricao da noticia"
+                        placeholder="Digite o conteúdo ou descrição da notícia"
                         class="form-textarea min-h-[220px] @error('content') form-input-error @enderror"
                         aria-invalid="{{ $errors->has('content') ? 'true' : 'false' }}"
                         aria-describedby="{{ $errors->has('content') ? 'content-error' : 'content-help' }}"
@@ -142,7 +142,7 @@
                         </p>
                     @else
                         <p id="content-help" class="mt-2 text-sm text-neutral-500">
-                            Informe um conteudo claro e completo para apoiar a exibicao e a futura tela de detalhe.
+                            Informe um conteúdo claro e completo para apoiar a exibição e a futura tela de detalhe.
                         </p>
                     @enderror
                 </div>
@@ -151,7 +151,7 @@
                     <h3 class="text-sm font-semibold text-neutral-800">Boas praticas</h3>
                     <ul class="mt-2 space-y-1 text-sm text-neutral-600">
                         <li>• Evite titulos genericos.</li>
-                        <li>• Relacione a noticia a categoria correta.</li>
+                        <li>• Relacione a notícia à categoria correta.</li>
                         <li>• Prefira descricoes completas e de leitura facil.</li>
                     </ul>
                 </div>
@@ -169,7 +169,7 @@
                         class="inline-flex items-center justify-center rounded-2xl bg-neutral-900 px-6 py-3 text-sm font-semibold text-white shadow-sm transition hover:bg-neutral-800 disabled:cursor-not-allowed disabled:opacity-60"
                         @disabled(! $hasCategories)
                     >
-                        Salvar noticia
+                        Salvar notícia
                     </button>
                 </div>
             </form>

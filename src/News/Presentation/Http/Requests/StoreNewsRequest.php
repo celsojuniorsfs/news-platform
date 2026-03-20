@@ -59,7 +59,9 @@ final class StoreNewsRequest extends FormRequest
     {
         return [
             'title.required' => 'O título da notícia é obrigatório.',
+            'title.min' => 'O título da notícia deve ter pelo menos :min caracteres.',
             'content.required' => 'O conteúdo da notícia é obrigatório.',
+            'content.min' => 'O conteúdo da notícia deve ter pelo menos :min caracteres.',
             'category_id.required' => 'A categoria da notícia é obrigatória.',
             'category_id.exists' => 'A categoria informada não existe.',
         ];

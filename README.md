@@ -49,22 +49,22 @@ Copy-Item .env.example .env
 
 ### 3. Subir os containers
 
-Para desenvolvimento com codigo montado em volume:
-
 ```bash
 docker compose -f docker-compose.yml -f docker-compose.dev.yml up -d --build
 ```
 
-Se quiser subir apenas a stack base:
-
-```bash
-docker compose up -d --build
-```
+Esse comando monta o codigo do projeto dentro do container e deve ser usado para executar comandos do Artisan, como `key:generate` e `migrate`.
 
 ### 4. Gerar a chave da aplicacao
 
 ```bash
 docker compose exec app php artisan key:generate
+```
+
+### 5. Rodar as migrations
+
+```bash
+docker compose exec app php artisan migrate
 ```
 
 ## Como subir a aplicacao

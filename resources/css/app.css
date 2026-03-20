@@ -24,4 +24,8 @@
     .form-textarea {
         @apply w-full rounded-2xl border border-neutral-300 bg-white px-4 py-3 text-sm text-neutral-800 shadow-sm outline-none transition placeholder:text-neutral-400 focus:border-neutral-500 focus:ring-2 focus:ring-neutral-300;
     }
+
+    .form-input-error {
+        @apply border-red-400 bg-red-50 text-red-900 placeholder:text-red-300 focus:border-red-500 focus:ring-red-200;
+    }
 }

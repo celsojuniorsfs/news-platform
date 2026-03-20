@@ -67,6 +67,24 @@ docker compose exec app php artisan key:generate
 docker compose exec app php artisan migrate
 ```
 
+### 6. Instalar as dependencias do frontend
+
+Execute no host, na raiz do projeto:
+
+```bash
+npm install
+```
+
+### 7. Subir o Vite em modo de desenvolvimento
+
+Execute no host, na raiz do projeto:
+
+```bash
+npm run dev
+```
+
+Com o Vite em execucao, o layout e os assets do frontend serao carregados corretamente durante os testes no navegador.
+
 ## Como subir a aplicacao
 
 Depois de subir os containers, a aplicacao fica disponivel em:

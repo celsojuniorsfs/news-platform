@@ -22,24 +22,24 @@
 
             <a
                 href="{{ route('news.index') }}"
-                class="inline-flex items-center justify-center rounded-2xl bg-neutral-900 px-5 py-3 text-sm font-semibold text-white shadow-sm transition hover:bg-neutral-800"
+                class="action-primary"
             >
                 Exibir notícias
             </a>
         </div>
 
-        <section class="mx-auto w-full max-w-3xl rounded-[28px] border border-neutral-200 bg-white p-5 shadow-sm sm:p-8">
+        <section class="page-section mx-auto w-full max-w-3xl p-5 sm:p-8">
             <div class="mb-6 flex flex-col gap-3 md:flex-row md:items-start md:justify-between">
                 <div>
-                    <h2 class="text-xl font-bold text-neutral-950">Formulário da notícia</h2>
-                    <p class="mt-1 text-sm text-neutral-500">
+                    <h2 class="section-title">Formulário da notícia</h2>
+                    <p class="section-description mt-1">
                         Informe título, categoria e conteúdo.
                     </p>
                 </div>
 
                 <a
                     href="{{ route('categories.index') }}"
-                    class="inline-flex items-center justify-center rounded-2xl border border-neutral-300 bg-white px-4 py-3 text-sm font-semibold text-neutral-700 transition hover:bg-neutral-50"
+                    class="action-secondary"
                 >
                     Cadastrar categorias
                 </a>
@@ -159,14 +159,14 @@
                 <div class="flex flex-col gap-3 sm:flex-row sm:justify-end">
                     <a
                         href="{{ route('news.create') }}"
-                        class="inline-flex items-center justify-center rounded-2xl border border-neutral-300 bg-white px-5 py-3 text-sm font-semibold text-neutral-700 transition hover:bg-neutral-50"
+                        class="action-secondary"
                     >
                         Limpar
                     </a>
 
                     <button
                         type="submit"
-                        class="inline-flex items-center justify-center rounded-2xl bg-neutral-900 px-6 py-3 text-sm font-semibold text-white shadow-sm transition hover:bg-neutral-800 disabled:cursor-not-allowed disabled:opacity-60"
+                        class="action-primary disabled:cursor-not-allowed disabled:opacity-60"
                         @disabled(! $hasCategories)
                     >
                         Salvar notícia

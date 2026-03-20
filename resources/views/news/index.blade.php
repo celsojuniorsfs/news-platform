@@ -16,17 +16,17 @@
 
             <a
                 href="{{ route('news.create') }}"
-                class="inline-flex items-center justify-center rounded-2xl bg-neutral-900 px-5 py-3 text-sm font-semibold text-white shadow-sm transition hover:bg-neutral-800"
+                class="action-primary"
             >
                 Cadastrar notícia
             </a>
         </div>
 
-        <section class="rounded-[28px] border border-neutral-200 bg-white p-5 shadow-sm sm:p-6">
+        <section class="page-section p-5 sm:p-6">
             <div class="mb-5 flex flex-col gap-2 md:flex-row md:items-center md:justify-between">
                 <div>
-                    <h2 class="text-xl font-bold text-neutral-950">Filtros</h2>
-                    <p class="text-sm text-neutral-500">Busque pelo título da notícia.</p>
+                    <h2 class="section-title">Filtros</h2>
+                    <p class="section-description">Busque pelo título da notícia.</p>
                 </div>
             </div>
 
@@ -62,14 +62,14 @@
                 <div class="flex items-end gap-3">
                     <button
                         type="submit"
-                        class="inline-flex h-12 w-full items-center justify-center rounded-2xl bg-neutral-900 px-5 text-sm font-semibold text-white shadow-sm transition hover:bg-neutral-800 lg:w-auto"
+                        class="action-primary h-12 w-full lg:w-auto"
                     >
                         Buscar
                     </button>
 
                     <a
                         href="{{ route('news.index') }}"
-                        class="inline-flex h-12 w-full items-center justify-center rounded-2xl border border-neutral-300 bg-white px-5 text-sm font-semibold text-neutral-700 transition hover:bg-neutral-50 lg:w-auto"
+                        class="action-secondary h-12 w-full lg:w-auto"
                     >
                         Limpar
                     </a>
@@ -80,11 +80,11 @@
         <section>
             <div class="mb-6 flex flex-col gap-2 md:flex-row md:items-center md:justify-between">
                 <div>
-                    <h2 class="text-xl font-bold text-neutral-950">Listagem</h2>
-                    <p class="text-sm text-neutral-500">Confira as notícias já publicadas.</p>
+                    <h2 class="section-title">Listagem</h2>
+                    <p class="section-description">Confira as notícias já publicadas.</p>
                 </div>
 
-                <span class="inline-flex w-fit rounded-full bg-neutral-900 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-white">
+                <span class="tag-badge w-fit">
                     {{ $newsItems->total() }} {{ $newsItems->total() === 1 ? 'registro' : 'registros' }}
                 </span>
             </div>
@@ -94,9 +94,9 @@
                     <div class="grid gap-6 sm:grid-cols-2 xl:grid-cols-3">
                 @endif
 
-                <article class="flex min-h-[360px] flex-col rounded-[10px] border border-neutral-200 bg-white p-5 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">
+                <article class="news-card">
                     <div class="mb-4">
-                        <h3 class="text-lg font-bold text-neutral-950">
+                        <h3 class="text-xl font-bold leading-tight text-neutral-950">
                             {{ $news->title }}
                         </h3>
                     </div>
@@ -110,7 +110,7 @@
                     </p>
 
                     <div class="mt-4">
-                        <span class="inline-flex rounded-full bg-neutral-900 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-white">
+                        <span class="tag-badge">
                             {{ $news->category->name }}
                         </span>
                     </div>
@@ -118,7 +118,7 @@
                     <div class="mt-auto pt-6">
                         <a
                             href="{{ route('news.show', $news->id) }}"
-                            class="inline-flex w-full items-center justify-center rounded-xl bg-neutral-200 px-4 py-3 text-sm font-semibold text-neutral-800 transition hover:bg-neutral-300"
+                            class="action-secondary w-full"
                         >
                             Acessar
                         </a>
@@ -129,7 +129,7 @@
                     </div>
                 @endif
             @empty
-                <div class="rounded-2xl border border-dashed border-neutral-300 bg-neutral-50 px-6 py-14 text-center">
+                <div class="page-section border-dashed px-6 py-14 text-center">
                     <h3 class="text-lg font-bold text-neutral-900">Nenhuma notícia encontrada</h3>
                     <p class="mt-2 text-sm text-neutral-500">
                         Tente outra busca ou cadastre uma nova notícia.

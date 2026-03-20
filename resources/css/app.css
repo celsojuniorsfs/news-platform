@@ -8,11 +8,42 @@
 @theme {
     --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
         'Segoe UI Symbol', 'Noto Color Emoji';
+    --color-brand-50: #f4f7fb;
+    --color-brand-100: #e8eef8;
+    --color-brand-300: #b9c9e5;
+    --color-brand-500: #5c749f;
+    --color-brand-700: #24344d;
+    --color-brand-900: #172033;
 }
 
 @layer base {
+    html {
+        scroll-behavior: smooth;
+    }
+
     body {
         font-family: var(--font-sans);
+        background:
+            radial-gradient(circle at top, rgba(232, 238, 248, 0.9), transparent 32%),
+            linear-gradient(180deg, #f8fafc 0%, #eef2f7 100%);
+        color: #172033;
+    }
+
+    ::selection {
+        background: rgba(92, 116, 159, 0.18);
+    }
+
+    a,
+    button,
+    input,
+    select,
+    textarea {
+        transition:
+            color 160ms ease,
+            background-color 160ms ease,
+            border-color 160ms ease,
+            box-shadow 160ms ease,
+            transform 160ms ease;
     }
 
     button:not(:disabled),
@@ -21,18 +52,61 @@
     [type='reset']:not(:disabled) {
         cursor: pointer;
     }
+
+    a:focus-visible,
+    button:focus-visible,
+    input:focus-visible,
+    select:focus-visible,
+    textarea:focus-visible {
+        outline: 2px solid rgba(92, 116, 159, 0.55);
+        outline-offset: 2px;
+    }
 }
 
 @layer components {
+    .page-section {
+        @apply rounded-[30px] border border-white/70 bg-white/92 shadow-[0_18px_48px_-28px_rgba(23,32,51,0.38)] backdrop-blur-sm;
+    }
+
+    .section-title {
+        @apply text-xl font-bold tracking-tight text-neutral-950;
+    }
+
+    .section-description {
+        @apply text-sm leading-6 text-neutral-500;
+    }
+
     .form-input {
-        @apply h-12 w-full rounded-2xl border border-neutral-300 bg-white px-4 text-sm text-neutral-800 shadow-sm outline-none transition placeholder:text-neutral-400 focus:border-neutral-500 focus:ring-2 focus:ring-neutral-300;
+        @apply h-12 w-full rounded-2xl border border-slate-200 bg-white px-4 text-sm text-neutral-800 shadow-[0_10px_30px_-22px_rgba(23,32,51,0.5)] outline-none placeholder:text-neutral-400 hover:border-slate-300 focus:border-[var(--color-brand-500)] focus:ring-4 focus:ring-[rgba(92,116,159,0.14)];
     }
 
     .form-textarea {
-        @apply w-full rounded-2xl border border-neutral-300 bg-white px-4 py-3 text-sm text-neutral-800 shadow-sm outline-none transition placeholder:text-neutral-400 focus:border-neutral-500 focus:ring-2 focus:ring-neutral-300;
+        @apply w-full rounded-2xl border border-slate-200 bg-white px-4 py-3 text-sm leading-6 text-neutral-800 shadow-[0_10px_30px_-22px_rgba(23,32,51,0.5)] outline-none placeholder:text-neutral-400 hover:border-slate-300 focus:border-[var(--color-brand-500)] focus:ring-4 focus:ring-[rgba(92,116,159,0.14)];
     }
 
     .form-input-error {
         @apply border-red-400 bg-red-50 text-red-900 placeholder:text-red-300 focus:border-red-500 focus:ring-red-200;
+    }
+
+    .action-primary {
+        @apply inline-flex items-center justify-center rounded-2xl bg-neutral-900 px-5 py-3 text-sm font-semibold text-white shadow-[0_16px_32px_-20px_rgba(23,32,51,0.8)] hover:-translate-y-0.5 hover:bg-[var(--color-brand-700)] focus-visible:bg-[var(--color-brand-700)];
+    }
+
+    .action-secondary {
+        @apply inline-flex items-center justify-center rounded-2xl border border-slate-200 bg-white px-5 py-3 text-sm font-semibold text-neutral-700 shadow-[0_12px_26px_-22px_rgba(23,32,51,0.6)] hover:-translate-y-0.5 hover:border-slate-300 hover:bg-slate-50;
+    }
+
+    .news-card {
+        @apply flex min-h-[360px] flex-col rounded-[22px] border border-white/70 bg-white/96 p-6 shadow-[0_20px_45px_-30px_rgba(23,32,51,0.45)] ring-1 ring-slate-100/80;
+    }
+
+    .news-card:hover {
+        transform: translateY(-4px);
+        border-color: rgba(185, 201, 229, 0.9);
+        box-shadow: 0 26px 50px -32px rgba(23, 32, 51, 0.38);
+    }
+
+    .tag-badge {
+        @apply inline-flex rounded-full bg-neutral-900 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-white;
     }
 }

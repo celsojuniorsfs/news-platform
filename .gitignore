@@ -28,7 +28,6 @@ composer.lock
 /node_modules/
 /public/build/
 /public/hot
-package-lock.json
 yarn.lock
 pnpm-lock.yaml
 

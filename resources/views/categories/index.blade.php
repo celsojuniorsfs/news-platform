@@ -17,10 +17,10 @@
             </div>
 
             <a
-                href="{{ route('news.index') }}"
+                href="{{ route('news.create') }}"
                 class="inline-flex items-center justify-center rounded-2xl bg-neutral-900 px-5 py-3 text-sm font-semibold text-white shadow-sm transition hover:bg-neutral-800"
             >
-                Voltar para noticias
+                Voltar para cadastro de noticias
             </a>
         </div>
 
@@ -75,7 +75,7 @@
 
                     <div class="flex flex-col gap-3 sm:flex-row sm:justify-end">
                         <a
-                            href="{{ route('news.index') }}"
+                            href="{{ route('news.create') }}"
                             class="inline-flex items-center justify-center rounded-2xl border border-neutral-300 bg-white px-5 py-3 text-sm font-semibold text-neutral-700 transition hover:bg-neutral-50"
                         >
                             Cancelar

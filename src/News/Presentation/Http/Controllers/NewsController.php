@@ -24,11 +24,13 @@ final class NewsController extends Controller
     public function index(
         Request $request,
         SearchNewsUseCase $searchNewsUseCase,
+        ListCategoriesUseCase $listCategoriesUseCase,
     ): View {
         $filters = SearchNewsInput::fromArray($request->all());
 
         return view('news.index', [
             'newsItems' => $searchNewsUseCase->execute($filters),
+            'categories' => $listCategoriesUseCase->execute(),
             'filters' => [
                 'title' => $filters->title,
                 'category_id' => $filters->categoryId,

@@ -44,7 +44,7 @@
                                 href="{{ route('categories.index') }}"
                                 class="{{ request()->routeIs('categories.*') ? 'text-neutral-950' : 'text-neutral-600' }} transition hover:text-neutral-950"
                             >
-                                Cadastrar Notícias
+                                Cadastrar Categorias
                             </a>
 
                             <a
@@ -88,7 +88,7 @@
                             href="{{ route('categories.index') }}"
                             class="rounded-xl px-3 py-2 text-sm font-semibold text-neutral-700 transition hover:bg-neutral-100 hover:text-neutral-950"
                         >
-                            Cadastrar Notícias
+                            Cadastrar Categorias
                         </a>
 
                         <a
@@ -141,14 +141,9 @@
                     </div>
                 @endif
 
-                @if ($errors->any())
+                @if ($errors->any() && !View::hasSection('suppressGlobalErrors'))
                     <div class="mb-6 rounded-2xl border border-red-200 bg-red-50 px-4 py-4 shadow-sm">
-                        <p class="mb-2 text-sm font-semibold text-red-700">Verifique os campos abaixo:</p>
-                        <ul class="space-y-1 text-sm text-red-700">
-                            @foreach ($errors->all() as $error)
-                                <li>• {{ $error }}</li>
-                            @endforeach
-                        </ul>
+                        <p class="mb-2 text-sm font-semibold text-red-700">Verifique os campos destacados no formulario.</p>
                     </div>
                 @endif
 

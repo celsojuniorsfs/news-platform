@@ -1,16 +1,18 @@
 @extends('layouts.app', [
-    'title' => 'Cadastrar Notícias | News Platform',
+    'title' => 'Cadastrar Categorias | News Platform',
     'globalSearchValue' => request('title'),
 ])
+
+@section('suppressGlobalErrors', 'true')
 
 @section('content')
     <section class="space-y-8">
         <div class="flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
             <div>
-                <p class="text-sm font-semibold uppercase tracking-[0.2em] text-neutral-500">Cadastrar notícias</p>
-                <h1 class="mt-2 text-3xl font-bold tracking-tight text-neutral-950">Categorias</h1>
+                <p class="text-sm font-semibold uppercase tracking-[0.2em] text-neutral-500">Cadastro</p>
+                <h1 class="mt-2 text-3xl font-bold tracking-tight text-neutral-950">Cadastrar categorias</h1>
                 <p class="mt-2 max-w-2xl text-sm text-neutral-600">
-                    Cadastre categorias para organizar as notícias e manter a base pronta para busca por categoria.
+                    Cadastre categorias para organizar melhor as noticias e permitir filtros mais eficientes na listagem.
                 </p>
             </div>
 
@@ -18,48 +20,70 @@
                 href="{{ route('news.index') }}"
                 class="inline-flex items-center justify-center rounded-2xl bg-neutral-900 px-5 py-3 text-sm font-semibold text-white shadow-sm transition hover:bg-neutral-800"
             >
-                Ver notícias
+                Voltar para noticias
             </a>
         </div>
 
-        <div class="grid gap-6 lg:grid-cols-[420px_minmax(0,1fr)]">
+        <div class="grid gap-6 xl:grid-cols-[440px_minmax(0,1fr)]">
             <section class="rounded-[28px] border border-neutral-200 bg-white p-5 shadow-sm sm:p-6">
                 <div class="mb-6">
                     <h2 class="text-xl font-bold text-neutral-950">Nova categoria</h2>
-                    <p class="mt-1 text-sm text-neutral-500">Preencha os dados básicos para cadastro.</p>
+                    <p class="mt-1 text-sm text-neutral-500">
+                        Preencha o nome da categoria. O backend sera responsavel por persistir e validar os dados.
+                    </p>
                 </div>
 
-                <form method="POST" action="{{ route('categories.store') }}" class="space-y-4">
+                <form method="POST" action="{{ route('categories.store') }}" class="space-y-5" novalidate>
                     @csrf
 
                     <div>
-                        <label for="name" class="mb-2 block text-sm font-semibold text-neutral-700">Nome</label>
+                        <label for="name" class="mb-2 block text-sm font-semibold text-neutral-700">
+                            Nome da categoria <span class="text-red-500">*</span>
+                        </label>
+
                         <input
                             id="name"
                             type="text"
                             name="name"
                             value="{{ old('name') }}"
                             placeholder="Ex.: Tecnologia"
-                            class="form-input"
+                            maxlength="255"
+                            class="form-input @error('name') form-input-error @enderror"
+                            aria-invalid="{{ $errors->has('name') ? 'true' : 'false' }}"
+                            aria-describedby="{{ $errors->has('name') ? 'name-error' : 'name-help' }}"
                         >
+
+                        @error('name')
+                            <p id="name-error" class="mt-2 text-sm font-medium text-red-600">
+                                {{ $message }}
+                            </p>
+                        @else
+                            <p id="name-help" class="mt-2 text-sm text-neutral-500">
+                                Informe um nome claro e objetivo para facilitar a organizacao das noticias.
+                            </p>
+                        @enderror
                     </div>
 
-                    <div>
-                        <label for="slug" class="mb-2 block text-sm font-semibold text-neutral-700">Slug</label>
-                        <input
-                            id="slug"
-                            type="text"
-                            name="slug"
-                            value="{{ old('slug') }}"
-                            placeholder="Opcional"
-                            class="form-input"
-                        >
+                    <div class="rounded-2xl border border-neutral-200 bg-neutral-50 px-4 py-4">
+                        <h3 class="text-sm font-semibold text-neutral-800">Boas praticas</h3>
+                        <ul class="mt-2 space-y-1 text-sm text-neutral-600">
+                            <li>• Evite nomes duplicados.</li>
+                            <li>• Prefira nomes curtos e consistentes.</li>
+                            <li>• Use categorias amplas, como Politica, Esportes ou Tecnologia.</li>
+                        </ul>
                     </div>
 
-                    <div class="pt-2">
+                    <div class="flex flex-col gap-3 sm:flex-row sm:justify-end">
+                        <a
+                            href="{{ route('news.index') }}"
+                            class="inline-flex items-center justify-center rounded-2xl border border-neutral-300 bg-white px-5 py-3 text-sm font-semibold text-neutral-700 transition hover:bg-neutral-50"
+                        >
+                            Cancelar
+                        </a>
+
                         <button
                             type="submit"
-                            class="inline-flex w-full items-center justify-center rounded-2xl bg-neutral-900 px-5 py-3 text-sm font-semibold text-white shadow-sm transition hover:bg-neutral-800"
+                            class="inline-flex items-center justify-center rounded-2xl bg-neutral-900 px-6 py-3 text-sm font-semibold text-white shadow-sm transition hover:bg-neutral-800"
                         >
                             Salvar categoria
                         </button>
@@ -68,33 +92,44 @@
             </section>
 
             <section class="rounded-[28px] border border-neutral-200 bg-white p-5 shadow-sm sm:p-6">
-                <div class="mb-6">
-                    <h2 class="text-xl font-bold text-neutral-950">Categorias cadastradas</h2>
-                    <p class="mt-1 text-sm text-neutral-500">Lista simples para apoio operacional.</p>
+                <div class="mb-6 flex flex-col gap-2 md:flex-row md:items-center md:justify-between">
+                    <div>
+                        <h2 class="text-xl font-bold text-neutral-950">Categorias cadastradas</h2>
+                        <p class="mt-1 text-sm text-neutral-500">
+                            Visualize as categorias ja disponiveis para uso no cadastro de noticias.
+                        </p>
+                    </div>
+
+                    <span class="inline-flex w-fit rounded-full bg-neutral-900 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-white">
+                        {{ $categories->count() }} {{ $categories->count() === 1 ? 'registro' : 'registros' }}
+                    </span>
                 </div>
 
                 @forelse ($categories as $category)
-                    <div class="flex items-center justify-between gap-4 rounded-2xl border border-neutral-200 px-4 py-4">
-                        <div>
-                            <p class="font-semibold text-neutral-900">{{ $category->name }}</p>
-                            <p class="text-sm text-neutral-500">
-                                {{ $category->slug ?: 'Slug não informado' }}
+                    <article class="flex items-center justify-between gap-4 rounded-2xl border border-neutral-200 bg-white px-4 py-4 transition hover:border-neutral-300 hover:shadow-sm">
+                        <div class="min-w-0">
+                            <p class="truncate text-base font-semibold text-neutral-900">
+                                {{ $category->name }}
+                            </p>
+
+                            <p class="mt-1 text-sm text-neutral-500">
+                                Categoria disponivel para associacao com noticias
                             </p>
                         </div>
 
-                        <span class="inline-flex rounded-full bg-neutral-100 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-neutral-600">
-                            Categoria
+                        <span class="inline-flex shrink-0 rounded-full bg-neutral-100 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-neutral-600">
+                            Ativa
                         </span>
-                    </div>
+                    </article>
 
                     @if (! $loop->last)
                         <div class="h-3"></div>
                     @endif
                 @empty
-                    <div class="rounded-2xl border border-dashed border-neutral-300 px-6 py-12 text-center">
+                    <div class="rounded-2xl border border-dashed border-neutral-300 bg-neutral-50 px-6 py-14 text-center">
                         <h3 class="text-lg font-bold text-neutral-900">Nenhuma categoria cadastrada</h3>
                         <p class="mt-2 text-sm text-neutral-500">
-                            Cadastre a primeira categoria para começar a organizar as notícias.
+                            Cadastre a primeira categoria utilizando o formulario ao lado.
                         </p>
                     </div>
                 @endforelse

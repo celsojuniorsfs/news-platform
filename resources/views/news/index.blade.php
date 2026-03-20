@@ -38,7 +38,7 @@
                         type="text"
                         name="title"
                         value="{{ $filters['title'] ?? '' }}"
-                        placeholder="Digite parte do título"
+                        placeholder="Digite parte do titulo"
                         class="form-input"
                     >
                 </div>

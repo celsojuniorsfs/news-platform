@@ -15,6 +15,7 @@ Route::prefix('categories')->group(function (): void {
 
 Route::prefix('news')->group(function (): void {
     Route::get('/', [NewsController::class, 'index'])->name('news.index');
+    Route::get('/create', [NewsController::class, 'create'])->name('news.create');
     Route::post('/', [NewsController::class, 'store'])->name('news.store');
     Route::get('/{news}', [NewsController::class, 'show'])->name('news.show');
 });

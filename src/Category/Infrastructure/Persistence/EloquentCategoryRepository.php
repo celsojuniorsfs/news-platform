@@ -30,7 +30,7 @@ final class EloquentCategoryRepository implements CategoryRepository
     public function findAllOrdered(): Collection
     {
         return Category::query()
-            ->orderBy('name')
+            ->latest()
             ->get();
     }
 }

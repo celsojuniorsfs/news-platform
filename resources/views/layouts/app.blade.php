@@ -41,15 +41,15 @@
                     <div class="hidden items-center gap-6 lg:flex">
                         <nav class="flex items-center gap-6 text-sm font-semibold uppercase tracking-wide text-neutral-700">
                             <a
-                                href="{{ route('categories.index') }}"
-                                class="{{ request()->routeIs('categories.*') ? 'text-neutral-950' : 'text-neutral-600' }} transition hover:text-neutral-950"
+                                href="{{ route('news.create') }}"
+                                class="{{ request()->routeIs('news.create') ? 'text-neutral-950' : 'text-neutral-600' }} transition hover:text-neutral-950"
                             >
                                 Cadastrar Notícias
                             </a>
 
                             <a
                                 href="{{ route('news.index') }}"
-                                class="{{ request()->routeIs('news.*') ? 'text-neutral-950' : 'text-neutral-600' }} transition hover:text-neutral-950"
+                                class="{{ request()->routeIs('news.index') || request()->routeIs('news.show') ? 'text-neutral-950' : 'text-neutral-600' }} transition hover:text-neutral-950"
                             >
                                 Exibir Notícias
                             </a>
@@ -85,7 +85,7 @@
                 <div id="mobile-nav" class="hidden space-y-4 lg:hidden">
                     <nav class="grid gap-2 rounded-2xl border border-neutral-300 bg-white p-3 shadow-sm">
                         <a
-                            href="{{ route('categories.index') }}"
+                            href="{{ route('news.create') }}"
                             class="rounded-xl px-3 py-2 text-sm font-semibold text-neutral-700 transition hover:bg-neutral-100 hover:text-neutral-950"
                         >
                             Cadastrar Notícias
@@ -141,14 +141,9 @@
                     </div>
                 @endif
 
-                @if ($errors->any())
+                @if ($errors->any() && !View::hasSection('suppressGlobalErrors'))
                     <div class="mb-6 rounded-2xl border border-red-200 bg-red-50 px-4 py-4 shadow-sm">
-                        <p class="mb-2 text-sm font-semibold text-red-700">Verifique os campos abaixo:</p>
-                        <ul class="space-y-1 text-sm text-red-700">
-                            @foreach ($errors->all() as $error)
-                                <li>• {{ $error }}</li>
-                            @endforeach
-                        </ul>
+                        <p class="mb-2 text-sm font-semibold text-red-700">Verifique os campos destacados no formulario.</p>
                     </div>
                 @endif
 

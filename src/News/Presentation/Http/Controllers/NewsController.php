@@ -24,17 +24,23 @@ final class NewsController extends Controller
     public function index(
         Request $request,
         SearchNewsUseCase $searchNewsUseCase,
-        ListCategoriesUseCase $listCategoriesUseCase,
     ): View {
         $filters = SearchNewsInput::fromArray($request->all());
 
         return view('news.index', [
             'newsItems' => $searchNewsUseCase->execute($filters),
-            'categories' => $listCategoriesUseCase->execute(),
             'filters' => [
                 'title' => $filters->title,
                 'category_id' => $filters->categoryId,
             ],
+        ]);
+    }
+
+    public function create(
+        ListCategoriesUseCase $listCategoriesUseCase,
+    ): View {
+        return view('news.create', [
+            'categories' => $listCategoriesUseCase->execute(),
         ]);
     }
 
@@ -43,12 +49,12 @@ final class NewsController extends Controller
         CreateNewsUseCase $useCase,
     ): RedirectResponse {
         try {
-            $news = $useCase->execute(
+            $useCase->execute(
                 CreateNewsInput::fromArray($request->validated())
             );
 
             return redirect()
-                ->route('news.show', $news->id)
+                ->route('news.create')
                 ->with('success', 'Notícia cadastrada com sucesso.');
         } catch (Throwable) {
             return redirect()

@@ -67,7 +67,13 @@ docker compose exec app php artisan key:generate
 docker compose exec app php artisan migrate
 ```
 
-### 6. Instalar as dependencias do frontend
+### 6. Rode os seeders para popular o banco com dados de teste
+
+```bash
+docker compose exec app php artisan db:seed
+```
+
+### 7. Instalar as dependencias do frontend
 
 Execute no host, na raiz do projeto:
 
@@ -75,7 +81,7 @@ Execute no host, na raiz do projeto:
 npm install
 ```
 
-### 7. Subir o Vite em modo de desenvolvimento
+### 8. Subir o Vite em modo de desenvolvimento
 
 Execute no host, na raiz do projeto:
 

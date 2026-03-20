@@ -7,10 +7,10 @@
     <section class="space-y-8">
         <div class="flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
             <div>
-                <p class="text-sm font-semibold uppercase tracking-[0.2em] text-neutral-500">Noticias</p>
-                <h1 class="mt-2 text-3xl font-bold tracking-tight text-neutral-950">Exibir noticias</h1>
+                <p class="text-sm font-semibold uppercase tracking-[0.2em] text-neutral-500">Notícias</p>
+                <h1 class="mt-2 text-3xl font-bold tracking-tight text-neutral-950">Exibir notícias</h1>
                 <p class="mt-2 max-w-2xl text-sm text-neutral-600">
-                    Consulte os registros ja existentes com uma listagem em cards, busca simples e acesso rapido ao detalhe.
+                    Veja as notícias cadastradas e encontre o que precisa mais rápido.
                 </p>
             </div>
 
@@ -18,7 +18,7 @@
                 href="{{ route('news.create') }}"
                 class="inline-flex items-center justify-center rounded-2xl bg-neutral-900 px-5 py-3 text-sm font-semibold text-white shadow-sm transition hover:bg-neutral-800"
             >
-                Cadastrar noticia
+                Cadastrar notícia
             </a>
         </div>
 
@@ -26,13 +26,13 @@
             <div class="mb-5 flex flex-col gap-2 md:flex-row md:items-center md:justify-between">
                 <div>
                     <h2 class="text-xl font-bold text-neutral-950">Filtros</h2>
-                    <p class="text-sm text-neutral-500">Refine a listagem sem sair da pagina.</p>
+                    <p class="text-sm text-neutral-500">Busque pelo título da notícia.</p>
                 </div>
             </div>
 
             <form method="GET" action="{{ route('news.index') }}" class="grid gap-4 lg:grid-cols-[1.4fr_auto]">
                 <div>
-                    <label for="filter-title" class="mb-2 block text-sm font-semibold text-neutral-700">Titulo</label>
+                    <label for="filter-title" class="mb-2 block text-sm font-semibold text-neutral-700">Título</label>
                     <input
                         id="filter-title"
                         type="text"
@@ -65,7 +65,7 @@
             <div class="mb-6 flex flex-col gap-2 md:flex-row md:items-center md:justify-between">
                 <div>
                     <h2 class="text-xl font-bold text-neutral-950">Listagem</h2>
-                    <p class="text-sm text-neutral-500">Cards inspirados no wireframe com leitura simples e acesso rapido.</p>
+                    <p class="text-sm text-neutral-500">Confira as notícias já publicadas.</p>
                 </div>
 
                 <span class="inline-flex w-fit rounded-full bg-neutral-900 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-white">
@@ -108,9 +108,9 @@
                 @endif
             @empty
                 <div class="rounded-2xl border border-dashed border-neutral-300 bg-neutral-50 px-6 py-14 text-center">
-                    <h3 class="text-lg font-bold text-neutral-900">Nenhuma noticia encontrada</h3>
+                    <h3 class="text-lg font-bold text-neutral-900">Nenhuma notícia encontrada</h3>
                     <p class="mt-2 text-sm text-neutral-500">
-                        Cadastre uma nova noticia ou ajuste a busca para encontrar registros.
+                        Tente outra busca ou cadastre uma nova notícia.
                     </p>
                 </div>
             @endforelse

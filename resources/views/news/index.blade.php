@@ -85,12 +85,18 @@
                         </h3>
                     </div>
 
-                    <p class="text-sm leading-6 text-neutral-700">
-                        {{ \Illuminate\Support\Str::limit($news->content, 280) }}
+                    <p class="mb-2 text-xs font-semibold uppercase tracking-wide text-neutral-400">
+                        Resumo
                     </p>
 
-                    <div class="mt-4 text-xs font-medium uppercase tracking-wide text-neutral-400">
-                        {{ $news->category->name }}
+                    <p class="text-sm leading-6 text-neutral-700">
+                        {{ $news->excerpt ?: \Illuminate\Support\Str::limit($news->content, 220) }}
+                    </p>
+
+                    <div class="mt-4">
+                        <span class="inline-flex rounded-full bg-neutral-900 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-white">
+                            {{ $news->category->name }}
+                        </span>
                     </div>
 
                     <div class="mt-auto pt-6">

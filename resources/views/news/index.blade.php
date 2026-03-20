@@ -10,7 +10,7 @@
                 <p class="text-sm font-semibold uppercase tracking-[0.2em] text-neutral-500">Notícias</p>
                 <h1 class="mt-2 text-3xl font-bold tracking-tight text-neutral-950">Exibir notícias</h1>
                 <p class="mt-2 max-w-2xl text-sm text-neutral-600">
-                    Consulte os registros já existentes com uma listagem em cards, busca simples e acesso rápido ao detalhe.
+                    Veja as notícias cadastradas e encontre o que precisa mais rápido.
                 </p>
             </div>
 
@@ -26,7 +26,7 @@
             <div class="mb-5 flex flex-col gap-2 md:flex-row md:items-center md:justify-between">
                 <div>
                     <h2 class="text-xl font-bold text-neutral-950">Filtros</h2>
-                    <p class="text-sm text-neutral-500">Refine a listagem sem sair da página.</p>
+                    <p class="text-sm text-neutral-500">Busque pelo título da notícia.</p>
                 </div>
             </div>
 
@@ -65,7 +65,7 @@
             <div class="mb-6 flex flex-col gap-2 md:flex-row md:items-center md:justify-between">
                 <div>
                     <h2 class="text-xl font-bold text-neutral-950">Listagem</h2>
-                    <p class="text-sm text-neutral-500">Cards inspirados no wireframe com leitura simples e acesso rápido.</p>
+                    <p class="text-sm text-neutral-500">Confira as notícias já publicadas.</p>
                 </div>
 
                 <span class="inline-flex w-fit rounded-full bg-neutral-900 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-white">
@@ -110,7 +110,7 @@
                 <div class="rounded-2xl border border-dashed border-neutral-300 bg-neutral-50 px-6 py-14 text-center">
                     <h3 class="text-lg font-bold text-neutral-900">Nenhuma notícia encontrada</h3>
                     <p class="mt-2 text-sm text-neutral-500">
-                        Cadastre uma nova notícia ou ajuste a busca para encontrar registros.
+                        Tente outra busca ou cadastre uma nova notícia.
                     </p>
                 </div>
             @endforelse

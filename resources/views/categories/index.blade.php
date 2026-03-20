@@ -12,7 +12,7 @@
                 <p class="text-sm font-semibold uppercase tracking-[0.2em] text-neutral-500">Cadastro</p>
                 <h1 class="mt-2 text-3xl font-bold tracking-tight text-neutral-950">Cadastrar categorias</h1>
                 <p class="mt-2 max-w-2xl text-sm text-neutral-600">
-                    Cadastre categorias para organizar melhor as notícias e permitir filtros mais eficientes na listagem.
+                    Cadastre categorias para organizar melhor as notícias.
                 </p>
             </div>
 
@@ -29,7 +29,7 @@
                 <div class="mb-6">
                     <h2 class="text-xl font-bold text-neutral-950">Nova categoria</h2>
                     <p class="mt-1 text-sm text-neutral-500">
-                        Preencha o nome da categoria.
+                        Informe o nome da categoria.
                     </p>
                 </div>
 
@@ -59,7 +59,7 @@
                             </p>
                         @else
                             <p id="name-help" class="mt-2 text-sm text-neutral-500">
-                                Informe um nome claro e objetivo para facilitar a organização das notícias.
+                                Use um nome simples e fácil de identificar.
                             </p>
                         @enderror
                     </div>
@@ -96,7 +96,7 @@
                     <div>
                         <h2 class="text-xl font-bold text-neutral-950">Categorias cadastradas</h2>
                         <p class="mt-1 text-sm text-neutral-500">
-                            Visualize as categorias já disponíveis para uso no cadastro de notícias.
+                            Veja as categorias disponíveis.
                         </p>
                     </div>
 
@@ -113,7 +113,7 @@
                             </p>
 
                             <p class="mt-1 text-sm text-neutral-500">
-                                Categoria disponível para associação com notícias
+                                Pronta para uso
                             </p>
                         </div>
 
@@ -129,7 +129,7 @@
                     <div class="rounded-2xl border border-dashed border-neutral-300 bg-neutral-50 px-6 py-14 text-center">
                         <h3 class="text-lg font-bold text-neutral-900">Nenhuma categoria cadastrada</h3>
                         <p class="mt-2 text-sm text-neutral-500">
-                            Cadastre a primeira categoria utilizando o formulário ao lado.
+                            Cadastre a primeira categoria.
                         </p>
                     </div>
                 @endforelse

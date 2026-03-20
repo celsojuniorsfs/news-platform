@@ -16,7 +16,7 @@
                 <p class="text-sm font-semibold uppercase tracking-[0.2em] text-neutral-500">Cadastro</p>
                 <h1 class="mt-2 text-3xl font-bold tracking-tight text-neutral-950">Cadastrar notícias</h1>
                 <p class="mt-2 max-w-2xl text-sm text-neutral-600">
-                    Preencha os dados da notícia em uma tela dedicada, com validação visual e acesso rápido ao cadastro de categorias.
+                    Preencha os dados para cadastrar uma nova notícia.
                 </p>
             </div>
 
@@ -33,7 +33,7 @@
                 <div>
                     <h2 class="text-xl font-bold text-neutral-950">Formulário da notícia</h2>
                     <p class="mt-1 text-sm text-neutral-500">
-                        Título, conteúdo e categoria obrigatórios para um cadastro consistente.
+                        Informe título, categoria e conteúdo.
                     </p>
                 </div>
 
@@ -71,7 +71,7 @@
                         </p>
                     @else
                         <p id="title-help" class="mt-2 text-sm text-neutral-500">
-                            Use um título objetivo para facilitar a identificação da notícia na listagem.
+                            Use um título claro e direto.
                         </p>
                     @enderror
                 </div>
@@ -116,7 +116,7 @@
                         </p>
                     @else
                         <p id="category-help" class="mt-2 text-sm text-neutral-500">
-                            {{ $hasCategories ? 'Escolha a categoria que melhor representa a notícia.' : 'Você ainda não tem categorias disponíveis para vincular.' }}
+                            {{ $hasCategories ? 'Escolha a categoria da notícia.' : 'Cadastre uma categoria para continuar.' }}
                         </p>
                     @enderror
                 </div>
@@ -142,7 +142,7 @@
                         </p>
                     @else
                         <p id="content-help" class="mt-2 text-sm text-neutral-500">
-                            Informe um conteúdo claro e completo para apoiar a exibição e a futura tela de detalhe.
+                            Descreva a notícia de forma objetiva.
                         </p>
                     @enderror
                 </div>

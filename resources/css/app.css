@@ -14,6 +14,13 @@
     body {
         font-family: var(--font-sans);
     }
+
+    button:not(:disabled),
+    [type='button']:not(:disabled),
+    [type='submit']:not(:disabled),
+    [type='reset']:not(:disabled) {
+        cursor: pointer;
+    }
 }
 
 @layer components {

@@ -30,7 +30,7 @@
                 </div>
             </div>
 
-            <form method="GET" action="{{ route('news.index') }}" class="grid gap-4 lg:grid-cols-[1.4fr_auto]">
+            <form method="GET" action="{{ route('news.index') }}" class="grid gap-4 lg:grid-cols-[1.3fr_1fr_auto]">
                 <div>
                     <label for="filter-title" class="mb-2 block text-sm font-semibold text-neutral-700">Título</label>
                     <input
@@ -41,6 +41,22 @@
                         placeholder="Digite parte do titulo"
                         class="form-input"
                     >
+                </div>
+
+                <div>
+                    <label for="filter-category" class="mb-2 block text-sm font-semibold text-neutral-700">Categoria</label>
+                    <select id="filter-category" name="category_id" class="form-input">
+                        <option value="">Todas as categorias</option>
+
+                        @foreach ($categories as $category)
+                            <option
+                                value="{{ $category->id }}"
+                                @selected((string) $category->id === (string) ($filters['category_id'] ?? ''))
+                            >
+                                {{ $category->name }}
+                            </option>
+                        @endforeach
+                    </select>
                 </div>
 
                 <div class="flex items-end gap-3">

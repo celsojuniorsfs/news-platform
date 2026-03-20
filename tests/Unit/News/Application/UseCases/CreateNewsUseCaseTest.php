@@ -18,6 +18,7 @@ final class CreateNewsUseCaseTest extends TestCase
         $input = new CreateNewsInput(
             title: 'Test News',
             content: 'This is a test news content',
+            excerpt: 'This is a test news excerpt',
             categoryId: 1,
         );
 
@@ -25,6 +26,7 @@ final class CreateNewsUseCaseTest extends TestCase
         $expectedNews->id = 1;
         $expectedNews->title = $input->title;
         $expectedNews->content = $input->content;
+        $expectedNews->excerpt = $input->excerpt;
         $expectedNews->category_id = $input->categoryId;
 
         $repositoryMock = $this->createMock(NewsRepository::class);
@@ -43,7 +45,7 @@ final class CreateNewsUseCaseTest extends TestCase
         $this->assertSame($expectedNews, $result);
         $this->assertEquals('Test News', $result->title);
         $this->assertEquals('This is a test news content', $result->content);
+        $this->assertEquals('This is a test news excerpt', $result->excerpt);
         $this->assertEquals(1, $result->category_id);
     }
 }
-

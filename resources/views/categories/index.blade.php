@@ -29,7 +29,7 @@
                 <div class="mb-6">
                     <h2 class="text-xl font-bold text-neutral-950">Nova categoria</h2>
                     <p class="mt-1 text-sm text-neutral-500">
-                        Preencha o nome da categoria. O backend sera responsavel por persistir e validar os dados.
+                        Preencha o nome da categoria.
                     </p>
                 </div>
 

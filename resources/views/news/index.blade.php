@@ -10,7 +10,7 @@
                 <p class="text-sm font-semibold uppercase tracking-[0.2em] text-neutral-500">Notícias</p>
                 <h1 class="mt-2 text-3xl font-bold tracking-tight text-neutral-950">Exibir notícias</h1>
                 <p class="mt-2 max-w-2xl text-sm text-neutral-600">
-                    Consulte os registros ja existentes com uma listagem em cards, busca simples e acesso rapido ao detalhe.
+                    Consulte os registros já existentes com uma listagem em cards, busca simples e acesso rápido ao detalhe.
                 </p>
             </div>
 
@@ -26,19 +26,19 @@
             <div class="mb-5 flex flex-col gap-2 md:flex-row md:items-center md:justify-between">
                 <div>
                     <h2 class="text-xl font-bold text-neutral-950">Filtros</h2>
-                    <p class="text-sm text-neutral-500">Refine a listagem sem sair da pagina.</p>
+                    <p class="text-sm text-neutral-500">Refine a listagem sem sair da página.</p>
                 </div>
             </div>
 
             <form method="GET" action="{{ route('news.index') }}" class="grid gap-4 lg:grid-cols-[1.4fr_auto]">
                 <div>
-                    <label for="filter-title" class="mb-2 block text-sm font-semibold text-neutral-700">Titulo</label>
+                    <label for="filter-title" class="mb-2 block text-sm font-semibold text-neutral-700">Título</label>
                     <input
                         id="filter-title"
                         type="text"
                         name="title"
                         value="{{ $filters['title'] ?? '' }}"
-                        placeholder="Digite parte do titulo"
+                        placeholder="Digite parte do título"
                         class="form-input"
                     >
                 </div>
@@ -65,7 +65,7 @@
             <div class="mb-6 flex flex-col gap-2 md:flex-row md:items-center md:justify-between">
                 <div>
                     <h2 class="text-xl font-bold text-neutral-950">Listagem</h2>
-                    <p class="text-sm text-neutral-500">Cards inspirados no wireframe com leitura simples e acesso rapido.</p>
+                    <p class="text-sm text-neutral-500">Cards inspirados no wireframe com leitura simples e acesso rápido.</p>
                 </div>
 
                 <span class="inline-flex w-fit rounded-full bg-neutral-900 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-white">

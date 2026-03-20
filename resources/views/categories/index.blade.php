@@ -65,11 +65,11 @@
                     </div>
 
                     <div class="rounded-2xl border border-neutral-200 bg-neutral-50 px-4 py-4">
-                        <h3 class="text-sm font-semibold text-neutral-800">Boas praticas</h3>
+                        <h3 class="text-sm font-semibold text-neutral-800">Boas práticas</h3>
                         <ul class="mt-2 space-y-1 text-sm text-neutral-600">
                             <li>• Evite nomes duplicados.</li>
                             <li>• Prefira nomes curtos e consistentes.</li>
-                            <li>• Use categorias amplas, como Politica, Esportes ou Tecnologia.</li>
+                            <li>• Use categorias amplas, como Política, Esportes ou Tecnologia.</li>
                         </ul>
                     </div>
 
@@ -129,7 +129,7 @@
                     <div class="rounded-2xl border border-dashed border-neutral-300 bg-neutral-50 px-6 py-14 text-center">
                         <h3 class="text-lg font-bold text-neutral-900">Nenhuma categoria cadastrada</h3>
                         <p class="mt-2 text-sm text-neutral-500">
-                            Cadastre a primeira categoria utilizando o formulario ao lado.
+                            Cadastre a primeira categoria utilizando o formulário ao lado.
                         </p>
                     </div>
                 @endforelse

@@ -123,7 +123,7 @@
 
                 <div>
                     <label for="news-content" class="mb-2 block text-sm font-semibold text-neutral-700">
-                        Conteudo / descricao <span class="text-red-500">*</span>
+                        Conteúdo / descrição <span class="text-red-500">*</span>
                     </label>
 
                     <textarea
@@ -148,11 +148,11 @@
                 </div>
 
                 <div class="rounded-2xl border border-neutral-200 bg-neutral-50 px-4 py-4">
-                    <h3 class="text-sm font-semibold text-neutral-800">Boas praticas</h3>
+                    <h3 class="text-sm font-semibold text-neutral-800">Boas práticas</h3>
                     <ul class="mt-2 space-y-1 text-sm text-neutral-600">
-                        <li>• Evite titulos genericos.</li>
+                        <li>• Evite títulos genéricos.</li>
                         <li>• Relacione a notícia à categoria correta.</li>
-                        <li>• Prefira descricoes completas e de leitura facil.</li>
+                        <li>• Prefira descrições completas e de leitura fácil.</li>
                     </ul>
                 </div>
 
